@@ -18,7 +18,7 @@ def predict():
     Predict the real estate price based on user inputs
     and render the result to the html page
     '''
-    
+
     if request.method == 'POST':
         type_real_estate = request.form['type_real_estate']
         region = request.form['region']

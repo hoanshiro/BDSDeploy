@@ -5,7 +5,7 @@ import pickle
 
 app = Flask(__name__)
 
-model_file = open('linear_model.pkl', 'rb')
+model_file = open('rf_model.pkl', 'rb')
 model = pickle.load(model_file, encoding='bytes')
 
 @app.route('/')

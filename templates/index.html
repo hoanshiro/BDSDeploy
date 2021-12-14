@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <title>Real Estate Price Predictor</title>
+    </head>
+    <body
+        class="
+            flex flex-col
+            justify-between
+            item-center
+            p-8
+            min-h-screen
+            bg-gradient-to-r
+            from-green-400
+            to-blue-500
+            text-gray-800
+            md:flex-row
+        "
+    >   
+        <main class="bg-white p-16 flex-auto md:mt-0 md:ml-8 rounded-lg">
+            <h1 class="text-3xl font-bold mb-8">
+                Dự báo giá Bất Động Sản:
+            </h1>
+
+            <form
+                action="/predict"
+                method="post"
+                class="flex flex-col"
+            >
+                <!-- Categorical Feature -->
+
+
+                <label for="type_real_estate"  class="mt-4 mb-2">
+                    Loại hình bất động sản :
+                </label>
+                <select
+                    name="type_real_estate"
+                    id="type_real_estate"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="Căn hộ/Chung cư">Căn hộ/Chung cư</option>
+                    <option value="Nhà ở">Nhà ở</option>
+                    <option value="Đất">Đất</option>
+                    <option value="Khác">Khác</option>
+                </select>
+                
+
+                <label for="region" class="mt-4 mb-2">Tỉnh, Thành phố  :</label>
+                <select
+                    name="region"
+                    id="region"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="Đồng Nai">Đồng Nai</option>
+                    <option value="Bình Dương">Bình Dương</option>
+                    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                </select>
+
+
+                <label for="area" class="mt-4 mb-2">Quận, Huyện :</label>
+                <select
+                    name="area"
+                    id="area"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="Thành phố Biên Hòa">Thành phố Biên Hòa</option>
+                    <option value="Huyện Nhơn Trạch">Huyện Nhơn Trạch</option>
+                    <option value="Huyện Long Thành">Huyện Long Thành</option>
+                    <option value="Huyện Vĩnh Cửu">Huyện Vĩnh Cửu</option>
+                    <option value="Huyện Trảng Bom">Huyện Trảng Bom</option>
+                    <option value="Thành phố Long Khánh">Thành phố Long Khánh</option>
+                    <option value="Huyện Thống Nhất">Huyện Thống Nhất</option>
+                    <option value="Huyện Định Quán">Huyện Định Quán</option>
+                    <option value="Huyện Xuân Lộc">Huyện Xuân Lộc</option>
+                    <option value="Huyện Cẩm Mỹ">Huyện Cẩm Mỹ</option>
+                    <option value="Huyện Tân Phú">Huyện Tân Phú</option>
+                    <option value="Thành phố Thuận An">Thành phố Thuận An</option>
+                    <option value="Thành phố Dĩ An">Thành phố Dĩ An</option>
+                    <option value="Thị xã Tân Uyên">Thị xã Tân Uyên</option>
+                    <option value="Thành phố Thủ Dầu Một">Thành phố Thủ Dầu Một</option>
+                    <option value="Thị xã Bến Cát">Thị xã Bến Cát</option>
+                    <option value="Huyện Bàu Bàng">Huyện Bàu Bàng</option>
+                    <option value="Huyện Phú Giáo">Huyện Phú Giáo</option>
+                    <option value="Huyện Dầu Tiếng">Huyện Dầu Tiếng</option>
+                    <option value="Huyện Bắc Tân Uyên">Huyện Bắc Tân Uyên</option>
+                    <option value="Quận 9">Quận 9</option>
+                    <option value="Quận Bình Tân">Quận Bình Tân</option>
+                    <option value="Thành phố Thủ Đức">Thành phố Thủ Đức</option>
+                    <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
+                    <option value="Quận 12">Quận 12</option>
+                    <option value="Quận Tân Phú">Quận Tân Phú</option>
+                    <option value="Quận 7">Quận 7</option>
+                    <option value="Huyện Nhà Bè">Huyện Nhà Bè</option>
+                    <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
+                    <option value="Quận 8">Quận 8</option>
+                    <option value="Quận 2">Quận 2</option>
+                    <option value="Quận Tân Bình">Quận Tân Bình</option>
+                    <option value="Quận 6">Quận 6</option>
+                    <option value="Quận 10">Quận 10</option>
+                    <option value="Quận 3">Quận 3</option>
+                    <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+                    <option value="Huyện Bình Chánh">Huyện Bình Chánh</option>
+                    <option value="Quận 4">Quận 4</option>
+                    <option value="Quận 5">Quận 5</option>
+                    <option value="Quận 1">Quận 1</option>
+                    <option value="Huyện Hóc Môn">Huyện Hóc Môn</option>
+                    <option value="Quận 11">Quận 11</option>
+                    <option value="Huyện Củ Chi">Huyện Củ Chi</option>
+                    <option value="Huyện Cần Giờ">Huyện Cần Giờ</option>
+                </select>
+
+                <label for="property_legal_document" class="mt-4 mb-2">Giấy tờ pháp lý :</label>
+                <select
+                    name="property_legal_document"
+                    id="property_legal_document"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="Đang chờ sổ">Đang chờ sổ</option>
+                    <option value="Đã có sổ">Đã có sổ</option>
+                    <option value="Giấy tờ khác">Giấy tờ khác</option>
+                </select>
+
+                <label for="rooms" class="mt-4 mb-2">Số phòng ngủ :</label>
+                <select
+                    name="rooms"
+                    id="rooms"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="Nhiều hơn 10">Nhiều hơn 10</option>
+                </select>
+
+                <label for="toilets" class="mt-4 mb-2">Số phòng vệ sinh :</label>
+                <select
+                    name="toilets"
+                    id="toilets"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="Nhiều hơn 6">Nhiều hơn 6</option>
+                </select>
+
+                <label for="floors" class="mt-4 mb-2">Số tầng :</label>
+                <select
+                    name="floors"
+                    id="floors"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="Nhiều hơn 10">Nhiều hơn 10</option>
+                </select>
+
+                <label for="year" class="mt-4 mb-2">Năm:</label>
+                <select
+                    name="year"
+                    id="year"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                </select>
+
+                <label for="month" class="mt-4 mb-2">Tháng:</label>
+                <select
+                    name="month"
+                    id="month"
+                    class="p-4 bg-gray-100 rounded-md"
+                >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            <!-- Numerical Feature -->
+
+                <label for="width" class="mb-2">Chiều rộng : </label>
+                <input
+                    type="text"
+                    name="width"
+                    placeholder="width"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="size" class="mb-2">Diện tích :</label>
+                <input
+                    type="text"
+                    name="size"
+                    placeholder="size"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="front_road" class="mb-2">Chiều rộng mặt đường :</label>
+                <input
+                    type="text"
+                    name="front_road"
+                    placeholder="front_road"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <!-- end -->
+
+                <button
+                    type="submit"
+                    class="
+                        flex
+                        justify-center
+                        align-center
+                        mt-8
+                        p-4
+                        bg-gradient-to-r
+                        from-green-400
+                        to-blue-500
+                        text-white
+                        rounded-md
+                    "
+                >
+                    predict
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-arrow-right ml-4"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+
+                
+                <!-- end -->
+            </form>
+        </main>
+
+        
+        <section class="mt-8 flex-auto rounded-lg md:mt-0 md:ml-8">
+            
+            <div class="bg-white p-16 rounded-lg">
+                <h1 class="text-2xl mb-8">
+                    Bất Động Sản bạn quan tâm có giá dự kiến là :
+                </h1>
+                <h2 class="text-5xl font-bold">{{ price }} tỷ VND</h2>
+                {% if (price) != 0 %}
+                <div class="mt-8">
+                    <p>Loại hình bất động sản : {{ type_real_estate }}</p>
+                    <p>Tỉnh, Thành phố  : {{ region }}</p>
+                    <p> Quận, Huyện : {{ area }}</p>
+                    <p>Năm: {{ year }}</p>
+                    <p>Tháng: {{ month }}</p>
+                    <p>Giấy tờ pháp lý : {{ property_legal_document }}</p>
+                    <p>Số phòng ngủ : {{ rooms }}</p>
+                    <p>Số phòng vệ sinh : {{ toilets }}</p>
+                    <p>Số tầng : {{ floors }}</p>
+                    <p>Chiều rộng: {{ width }}</p>
+                    <p>Diện tích : {{ size }}</p>
+                    <p>Chiều rộng mặt đường: {{ front_road }}</p>
+
+                </div>
+                {% endif %}
+            </div>
+            <div class="flex justify-around bg-white p-16 rounded-lg mt-8">
+                <img
+                    class="h-24 md:h-28"
+                    src="https://upload.wikimedia.org/wikipedia/commons/3/38/Logo_UIT_updated.jpg"
+                    alt="logo-dts"
+                />
+            </div>
+        </section>
+    </body>
+</html>

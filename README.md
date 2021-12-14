@@ -7,8 +7,8 @@ It's easy to install and run it on your computer.
 
 ```shell
 # 1. First, clone the repo
-$ git clone https://github.com/mtobeiyf/keras-flask-deploy-webapp.git
-$ cd keras-flask-deploy-webapp
+$ git clone git@github.com:hoanshiro/BDSDeploy.git
+$ cd BDSDeploy
 
 # 2. Install Python packages
 $ pip install -r requirements.txt

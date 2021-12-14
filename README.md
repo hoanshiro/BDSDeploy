@@ -1,6 +1,7 @@
 ### Deploy Real Estate Predictor
-Model : Random Forest Regression
-R2 Score: 0.84
+- Model : Random Forest Regression
+- R2 Score: 0.84
+- Link: https://drive.google.com/file/d/1lArzpvF3cCopgJTtEX3yF7EsyTns0wv7
 ## Local Installation
 
 It's easy to install and run it on your computer.
